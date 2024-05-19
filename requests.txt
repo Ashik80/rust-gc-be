@@ -1,0 +1,43 @@
+// products
+
+curl http://localhost:8080/products -s | jq
+
+curl http://localhost:8080/products/2 -si
+
+curl -X POST \
+	-H 'Content-type: application/json' \
+	-d '{
+		"title": "Bottle",
+		"description": "Water bottle",
+		"stock_amount": "34",
+		"price": 34.34,
+		"categories": [2, 3]
+	}' \
+	http://localhost:8080/products
+
+curl -X POST \
+	-F images=@/home/shuvo/Pictures/Screenshots/code.png \
+	-F images=@/home/shuvo/Pictures/Screenshots/cancel_button.png \
+	http://localhost:8080/product/9/images
+
+// categories
+
+curl http://localhost:8080/categories -s | jq
+
+curl http://localhost:8080/categories/2 -s | jq
+
+// auth
+
+// login
+
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{"email": "ragib@gmail.com", "password": "P@ssw0rd"}' \
+    http://localhost:8080/login -si
+
+// signup
+
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{"email": "ragib@gmail.com", "password": "P@ssw0rd"}' \
+    http://localhost:8080/signup -si
